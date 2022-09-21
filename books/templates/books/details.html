@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documeernt</title>
+    <style>
+        .container{
+            margin: auto;
+            margin-top: 200px;
+            text-align: center;
+            width: 500px;
+            padding: 30px;
+            background-image: linear-gradient(to top, #e0e6ee, #c5e4f9, #9de4fd, #68e5f7, #14e5e5);
+            border-radius: 10px;
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            background-color:black;
+            border-radius: 7px;
+        }
+        button :hover{
+            color: #14e5e5;
+            font-size: 17px;
+        }
+        button a{
+            text-decoration: none;
+            color:white;
+            font-size: 15px;
+        }
+        p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Details of the book {{books.title}}</h1>
+    <p>
+    Title : {{books.title}} <br>
+    Author : {{books.author}} <br>
+    Price : {{books.price}} <br>
+    </p>
+    <button><a href="/books/">Back</a></button>
+    <button><a href="/books/{{books.id}}/update/">Edit Details</a></button>
+    <button><a href="/books/{{books.id}}/delete/">Delete</a></button>
+</div>
+</body>
+</html>
