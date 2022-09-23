@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Login
+Library App
 {% endblock title %}
 
 {% block style %}
@@ -21,11 +21,10 @@ a{
 {% endblock style %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input id="save" type="submit" value="Login">
-</form>
-<br> Doesn't have an account?<br>
-<a href="{% url 'signup' %}"><button id="save">Signup</button></a>
+<img src="/static/library.jpg" alt="No image">
+<h1>Library Management System</h1>
+        Already have an account?<br>
+        <a href="{% url 'login' %}"><button id="save">Login</button></a><br><br>
+        Doesn't have an account?<br>
+        <a href="{% url 'signup' %}"><button id="save">Signup</button></a><br>
 {% endblock content %}

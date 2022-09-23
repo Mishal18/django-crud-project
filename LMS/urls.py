@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import urls
-from books.views import signup
+from books.views import signup,landing_page
 
 urlpatterns = [
+    path('', landing_page),
     path('admin/', admin.site.urls),
     path('books/',  include('books.urls')),
     path('',include(urls)),
-    path('signup/', signup)
+    path('signup/', signup, name='signup')
 ]

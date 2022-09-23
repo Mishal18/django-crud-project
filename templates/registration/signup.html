@@ -1,44 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-    <style>
-        .container{
-            margin: auto;
-            margin-top: 200px;
-            text-align: center;
-            width: 500px;
-            padding: 30px;
-            background-image: linear-gradient(to top, #e0e6ee, #c5e4f9, #9de4fd, #68e5f7, #14e5e5);
-            border-radius: 10px;
-        }
-        #save{
-            width: 150px;
-            height: 30px;
-            background-color:black;
-            border-radius: 7px;
-            color: white;
-            font-size: 15px;
-        }
-        a{
-            text-decoration:none;
-            color: white;
-            font-size: 15px 
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input id="save" type="submit" value="Signup">
-    </form>
-    <br>Already have an account?<br>
-    <button id="save"><a href="/login">Login</a></button>
-    </div>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+Signup
+{% endblock title %}
+
+{% block style %}
+#save{
+    width: 150px;
+    height: 30px;
+    background-color:black;
+    border-radius: 7px;
+    color: white;
+    font-size: 15px;
+}
+a{
+    text-decoration:none;
+    color: white;
+    font-size: 15px 
+}
+{% endblock style %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input id="save" type="submit" value="Signup">
+</form>
+<br>Already have an account?<br>
+<a href="{% url 'login' %}"><button id="save">Login</button></a>
+{% endblock content %}

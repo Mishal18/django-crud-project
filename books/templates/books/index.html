@@ -1,88 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .container {
-            margin: auto;
-            margin-top: 200px;
-            text-align: center;
-            width: 500px;
-            padding: 30px;
-            background-image: linear-gradient(to top, #e0e6ee, #c5e4f9, #9de4fd, #68e5f7, #14e5e5);
-            border-radius: 10px;
-        }
+{% block title %}
+Books
+{% endblock title %}
 
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-        }
+{% block style %}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
 
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-        }
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
 
-        button {
-            width: 150px;
-            height: 30px;
-            background-color: black;
-            border-radius: 7px;
-        }
+button {
+    width: 150px;
+    height: 30px;
+    background-color: black;
+    border-radius: 7px;
+}
+a button{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+}
 
-        button :hover {
-            color: #14e5e5;
-            font-size: 17px;
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
 
-        }
+li {
+    font-size: 20px;
+}
+{% endblock style %}
 
-        button a {
-            text-decoration: none;
-            color: white;
-        }
+{% block username %}
+<p>#username : {{request.user}} </p>
+{% endblock username %}
 
-        a {
-            text-decoration: none;
-            color: black;
-            font-size: 15px;
-        }
-
-        li {
-            font-size: 20px;
-        }
-
-        li :hover {
-            color: grey;
-            font-size: 30px;
-        }
-    </style>
-</head>
-
-<body>
-    <p>#username : {{request.user}} </p>
-    <div class="container">
-        
-        <h1>Available Books</h1>
+{% block content %}
+<h1>Available Books</h1>
         <ul type="none">
             {% for book in Books %}
-            <a href="{{book.id}}/">
+            <a href="{% url 'books:details' book.id %}">
                 <div class="tooltip"><li>{{book}}</li><span class="tooltiptext">Click For More Info</span></div>
             </a>
             {% endfor %}
         </ul>
-        <button><a href="/books/create/">Add New Book</a></button>
-        <button><a href="/logout/">Logout</a></button>
-    </div>
-</body>
-
-</html>
+        <a href="{% url 'books:create' %}"><button>Add New Book</button></a>
+        <a href="{% url 'logout' %}"><button>Logout</button></a>
+{% endblock content %}

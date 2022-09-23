@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
+
+def landing_page(request) :
+    return render(request, 'landing.html')
 @login_required
 def index(request) :
     books=Book.objects.all()
